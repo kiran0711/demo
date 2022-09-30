@@ -13,7 +13,8 @@ export class CartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.cartList);  }
+    console.log(this.cartList);   
+  }
 
 
 cartListDetails(){

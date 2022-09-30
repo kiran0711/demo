@@ -21,17 +21,13 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(prod:any){
-  
     this.groupList.push(prod);
     //console.log(this.groupList) 
-
   }
 
 
   getResponse(event:any){
     this.message = event;
-
-
   }
 
 }

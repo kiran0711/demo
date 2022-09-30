@@ -1,22 +1,39 @@
 <button (onClick)="cartListDetails()">cart</button>
 
 <div class="container">
-    <h2>{{cartList}}</h2>
+    <!-- <h2>{{cartList}}</h2> -->
 </div>
 <div class="container-fluid">
    <div style="padding: 10px;text-align: center;" >
     <h3>My Cart</h3>
+    
+   
     <div class="card text-center">
         <div class="card-header">
           <strong><h5>Cart details</h5></strong>
         </div>
+        <ng-container *ngIf="cartList.length > 0; else cart">
+          <div class="row">
+            <ng-container *ngFor="let prod of cartList">
+                <div class="card col-md-3" >
+                    <img src="{{prod.img}}" class="img-fluid" alt="..." />
+                    <h4>{{prod.productName}}</h4>
+                    <p><strong>Price:</strong>{{prod.productCost}}</p>
+                </div>
+        </ng-container>
+        </div>
+    
+        </ng-container>
+        <ng-template #cart> 
         <div class="card-body">
             <img src="../assets/images/cart.png" alt="" width="500" height="333">
           <h5 class="card-title">Your Cart is empty</h5>
           <p class="card-text">Add items to it now.</p>
           <a href="product" class="btn btn-primary">SHOP NOW</a>
         </div>
+      </ng-template>
       </div>
+   
    </div>
 </div>
 
