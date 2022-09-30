@@ -13,7 +13,7 @@ list: any= dataList;
 
   ngOnInit(): void {
     this.title = 'Data List'
-    console.log(this.list['name']);
+    console.log(this.list);
     console.log('demo', this.title, this.data);
   }
 

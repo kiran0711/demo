@@ -1,1 +1,52 @@
 <h1>{{title}}</h1>
+<!-- <div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let prod of products">
+            <td>{{prod.productId}}</td>
+            <td>{{prod.productName}}</td>
+            <td>{{prod.productsDescription}}</td>
+            <td>{{prod.productCost}}</td>
+            <button type="button" class="btn btn-secondary" (click)="addToCart(prod)">Add to cart</button>
+          </tr>
+        </tbody>
+      </table>
+      <app-cart [cartList]="groupList"></app-cart>
+</div>    -->
+
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let prod of products">
+            <div class="card col-md-3" >
+                <img src="{{prod.img}}" class="img-fluid" alt="..." />
+                <h4>{{prod.productName}}</h4>
+                <p style=" white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">{{prod.productsDescription}}</p>
+                <p><strong>Price:</strong>{{prod.productCost}}</p>
+                <button type="button" class="btn btn-primary" (click)="addToCart(prod)">Add to cart</button>
+            </div>
+    </ng-container>
+    </div>
+</div>
+
+<app-cart [cartList]="groupList" (getResponse)="getResponse($event)"></app-cart>
+
+      
+  
+
+
+
+ 
+
+
+
+
+
+
