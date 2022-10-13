@@ -12,7 +12,7 @@ import { ProductService } from '../product.service';
 export class ProductsComponent implements OnInit {
   //@Input() title : any;
   message:any;
-  products : any = [];
+  products : any;
   groupList:any = [];
   //data: any[] = [];
   constructor(private router: Router,private productService :ProductService) { }
@@ -22,8 +22,8 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts(){
-    this.productService.getProducts().subscribe(data =>{
-    this.products = data;
+    this.productService.getProducts().subscribe((data: any) =>{
+    this.products = data['result'];
       console.log('data',this.products);
     })
   }
