@@ -1,13 +1,6 @@
-<button (onClick)="cartListDetails()">cart</button>
-
-<div class="container">
-    <!-- <h2>{{cartList}}</h2> -->
-</div>
 <div class="container-fluid">
    <div style="padding: 10px;text-align: center;" >
     <h3>My Cart</h3>
-    
-   
     <div class="card text-center">
         <div class="card-header">
           <strong><h5>Cart details</h5></strong>
@@ -19,12 +12,13 @@
                     <img src="{{prod.img}}" class="img-fluid" alt="..." />
                     <h4>{{prod.productName}}</h4>
                     <p><strong>Price:</strong>{{prod.productCost}}</p>
+                    <button type="button" class="btn btn-danger" (click)="cartListDetails(prod)">Delete</button>
                 </div>
         </ng-container>
         </div>
-    
-        </ng-container>
-        <ng-template #cart> 
+      </ng-container>
+
+      <ng-template #cart> 
         <div class="card-body">
             <img src="../assets/images/cart.png" alt="" width="500" height="333">
           <h5 class="card-title">Your Cart is empty</h5>
@@ -36,5 +30,11 @@
    
    </div>
 </div>
+
+
+<!-- <app-products (productOut)="deleteProduct($event)"></app-products> -->
+
+
+
 
 

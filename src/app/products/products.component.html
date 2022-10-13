@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+
 <!-- <div class="container">
     <table class="table table-striped">
         <thead>
@@ -26,16 +26,17 @@
     <div class="row">
         <ng-container *ngFor="let prod of products">
             <div class="card col-md-3" >
-                <img src="{{prod.img}}" class="img-fluid" alt="..." />
-                <h4>{{prod.productName}}</h4>
-                <p><strong>Price:</strong>{{prod.productCost}}</p>
-                <button type="button" class="btn btn-primary" (click)="addToCart(prod)">Add to cart</button>
+                <h4>{{prod.static_data_type}}</h4>
+                <p><strong>Price:</strong>{{prod.description}}</p>
+                <button type="button" class="btn btn-primary" (click)="addToCart(prod)">Add to cart</button><br>
+                <button type="button" class="btn btn-secondary" (click)="editToCart(prod)">Edit Cart</button><br>
+               
             </div>
     </ng-container>
     </div>
 </div>
 
-<app-cart [cartList]="groupList"></app-cart>
+<app-cart (getResponse)="getResponse($event)" [cartList]="groupList"></app-cart>
 
       
   

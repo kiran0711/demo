@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output ,EventEmitter} from '@angular/core';
-import { productList } from '../productData';
+import { ActivatedRoute, Router } from '@angular/router';
+import { products } from '../productData';
+import { ProductService } from '../product.service';
+
 
 @Component({
   selector: 'app-products',
@@ -7,27 +10,43 @@ import { productList } from '../productData';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  @Input() title : any;
+  //@Input() title : any;
   message:any;
-  @Output() productList = new EventEmitter();
-  products = productList;
+  products : any = [];
   groupList:any = [];
-  constructor() { }
+  //data: any[] = [];
+  constructor(private router: Router,private productService :ProductService) { }
 
   ngOnInit(): void {
-    this.title = 'Products';
-    //console.log(this.products);
-   // console.log(this.groupList)
+  this.getProducts();
+  }
+
+  getProducts(){
+    this.productService.getProducts().subscribe(data =>{
+    this.products = data;
+      console.log('data',this.products);
+    })
   }
 
   addToCart(prod:any){
     this.groupList.push(prod);
-    //console.log(this.groupList) 
   }
 
 
   getResponse(event:any){
-    this.message = event;
+    this.groupList.forEach((element:any,index:any)=>{
+      if(element.productId == event.productId) this.groupList.splice(index,1);
+   }); 
   }
+
+  editToCart(prod:any){
+    this.router.navigate(['/add-products']);
+    console.log(prod)
+  }
+
+
+
+
+
 
 }
